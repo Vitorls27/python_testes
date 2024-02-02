@@ -23,8 +23,15 @@ primeiros projetos python que estou praticando para aprender
 **instalar PySimpleGUI para interface**
 `pip install pysimplegui`
 
+**instalar tkinter para interface**
+`pip install tkinter`
+
 **instalar biblioteca de cotações de moedas**
 `pip install requests`
+
+**caso de erro no tkinter**
+`pip install pillow`
+`pip install Pillow-PIL`
 
 ### Links Úteis
 - [Documentação oficial do Laravel](https://laravel.com/docs).
