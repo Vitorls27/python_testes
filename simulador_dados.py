@@ -1,14 +1,18 @@
 # simudador de dado
 # simular um dado, gerando um valor de 1 até 6
 import random
-import PySimpleGUI
+
 
 class Sim_dado:
     def __init__(self):
         self.valor_minimo = 1
         self.valor_maximo = 6
         self.mensagem = 'gerar valor do dado? '
-
+        #layout
+        #layout = [
+        #    [sg.]
+        #]
+        
     def Iniciar(self):
         resposta = str()
         while(resposta != 'não' or 'n'):
