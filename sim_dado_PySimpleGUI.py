@@ -10,20 +10,20 @@ class Sim_dado:
         #layout
         self.layout = [
             [sg.Text('Jogar o dado?')],
-            [sg.Button('sim'),sg.Button('Não')]
+            [sg.Button('Sim'),sg.Button('Não')]
         ]
     
     def Iniciar(self):
         #criar uma janela
         self.janela = sg.Window('Simulador de Dado', layout=self.layout)
-        #ler os valores da tela
-        self.eventos, self.valores = self.janela.Read()
-        #fazer algo com os valores
         while True:
+            #ler os valores da tela
+            self.eventos, self.valores = self.janela.Read()
+            #fazer algo com os valores
             try:
-                if self.eventos == 'sim' or self.eventos == 's':
+                if self.eventos == 'Sim' or self.eventos == 's':
                     self.Gerar_valor_dado()
-                elif self.eventos == 'não' or self.eventos == 'n':
+                elif self.eventos == 'Não' or self.eventos == 'n':
                     print('ok')
                     break
                 else:
