@@ -1,4 +1,3 @@
-from cgitb import text
 import random
 from tkinter import *
 
