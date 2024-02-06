@@ -1,5 +1,5 @@
 import random
-from tkinter import *
+import PySimpleGUI as sg
 
 class Num_aleat:
     def __init__(self):
@@ -18,44 +18,46 @@ class Num_aleat:
     def Reiniciar(self):
         print('\nGostaria de Reiniciar novamente? ')
         while (self.loop is True):
-            self.resp = input()
-            if(self.resp == 'sim' or self.resp == 's'):
+            self.eventos, self.valores = self.janela.Read()
+            self.repetir = self.valores['input']
+            if(self.repetir == 'sim' or self.repetir == 's'):
                 self.loop = False
                 self.Iniciar()
-            elif(self.resp == 'não' or self.resp == 'n'):
+            elif(self.repetir == 'não' or self.repetir == 'n'):
                 self.loop = False
             else:
                 print('Por Favor, Digite "sim" ou "não"')
              
     def Iniciar(self):
+        #layout
+        self.layout = [
+            [sg.Text(self.msg, size=(20,0))],
+            [sg.Submit(), sg.Input(size=(18,0),key='input')]
+        ]
+        #cria janela
+        self.janela = sg.Window('Adivinhe o Número!', layout=self.layout)
+        
         self.loop = True
         self.Gerar_num()
         print(self.msg)
         #responder de acordo com o usuario
         while (self.loop is True):
-            self.resp = input()
+            #receber valores layout
+            self.eventos, self.valores = self.janela.Read()
+            self.valor_do_chute = self.valores['input']
+            #usar valores
             try:
-                if int(self.resp) == self.num:
+                if int(self.valor_do_chute) == self.num:
                     print(self.msg_certo)
                     self.Reiniciar()
-                elif int(self.resp) > self.num and int(self.resp) <= 25:
+                elif int(self.valor_do_chute) > self.num and int(self.valor_do_chute) <= 25:
                     print(self.msg_menor)
-                elif int(self.resp) < self.num and int(self.resp) >= 0:
+                elif int(self.valor_do_chute) < self.num and int(self.valor_do_chute) >= 0:
                     print(self.msg_maior)
                 else:
                     print('Por favor, digite um número de 0 a 25')
             except:
                 print('ERRO: Por favor, digite apenas números')
-        
-        #layout
-        layout = Tk()
-        layout.title('Acerte o Número')
-        
-        txt_inicio = Label(layout, text=self.msg)
-        self.resp = Text(layout, height=5, width=20)
-        resultado = Label(layout, text='')
-        
-        layout.mainloop()
         
 gerar = Num_aleat()
 gerar.Iniciar()
