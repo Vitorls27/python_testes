@@ -17,13 +17,13 @@ class Num_aleat:
         
     def Reiniciar(self):
         print('\nGostaria de Reiniciar novamente? ')
-        while (self.loop is True):
+        while(self.loop is True):
             self.eventos, self.valores = self.janela.Read()
             self.repetir = self.valores['input']
-            if(self.repetir == 'sim' or self.repetir == 's'):
+            if(str(self.repetir) == 'sim' or str(self.repetir) == 's'):
                 self.loop = False
                 self.Iniciar()
-            elif(self.repetir == 'não' or self.repetir == 'n'):
+            elif(str(self.repetir) == 'não' or str(self.repetir) == 'n'):
                 self.loop = False
             else:
                 print('Por Favor, Digite "sim" ou "não"')
@@ -32,32 +32,32 @@ class Num_aleat:
         #layout
         self.layout = [
             [sg.Text(self.msg, size=(20,0))],
-            [sg.Submit(), sg.Input(size=(18,0),key='input')]
+            [sg.Submit(), sg.Input(size=(18,0),key='input')],
+            [sg.Output(size=(20,10))]
         ]
         #cria janela
         self.janela = sg.Window('Adivinhe o Número!', layout=self.layout)
         
         self.loop = True
         self.Gerar_num()
-        print(self.msg)
         #responder de acordo com o usuario
-        while (self.loop is True):
+        while(self.loop is True):
             #receber valores layout
             self.eventos, self.valores = self.janela.Read()
             self.valor_do_chute = self.valores['input']
             #usar valores
             try:
                 if int(self.valor_do_chute) == self.num:
-                    print(self.msg_certo)
+                    print(str(self.msg_certo))
                     self.Reiniciar()
                 elif int(self.valor_do_chute) > self.num and int(self.valor_do_chute) <= 25:
-                    print(self.msg_menor)
+                    print(str(self.msg_menor))
                 elif int(self.valor_do_chute) < self.num and int(self.valor_do_chute) >= 0:
-                    print(self.msg_maior)
+                    print(str(self.msg_maior))
                 else:
                     print('Por favor, digite um número de 0 a 25')
             except:
                 print('ERRO: Por favor, digite apenas números')
-        
+
 gerar = Num_aleat()
 gerar.Iniciar()
