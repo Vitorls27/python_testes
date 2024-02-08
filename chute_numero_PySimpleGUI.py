@@ -33,7 +33,7 @@ class Num_aleat:
         self.layout = [
             [sg.Text(self.msg, size=(20,0))],
             [sg.Submit(), sg.Input(size=(18,0),key='input')],
-            [sg.Output(size=(20,10))]
+            [sg.Output(size=(25,10))]
         ]
         #cria janela
         self.janela = sg.Window('Adivinhe o Número!', layout=self.layout)
