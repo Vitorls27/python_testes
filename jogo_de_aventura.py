@@ -255,6 +255,5 @@ class Jogo:
                 except:
                     print('\nERRO: tente novamente\n')
 
-
 jogo = Jogo()
 jogo.Iniciar()
