@@ -1,8 +1,4 @@
-
 import random
-from xml.etree.ElementPath import ops
-
-
 class Jogo:
     def __init__(self):
         self.vida = True
